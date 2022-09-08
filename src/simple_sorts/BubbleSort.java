@@ -1,6 +1,7 @@
-package sort;
+package simple_sorts;
 
 import util.NewArray;
+
 import java.io.FileNotFoundException;
 
 /**
@@ -10,7 +11,7 @@ import java.io.FileNotFoundException;
  * <p>
  * Memory -> O(1)
  */
-public class ShakerSort {
+public class BubbleSort {
     private static int[] array;
 
     public static void main(String[] args) throws FileNotFoundException {
@@ -25,27 +26,20 @@ public class ShakerSort {
     private static long sortArray() {
         long start = System.currentTimeMillis();
 
-        int left = 0;
-        int right = array.length - 1;
-        do {
-            for (int i = 0; i < right; i++) {
+        boolean isSorted = false;
+        while (!isSorted) {
+            isSorted = true;
+
+            for (int i = 0; i < array.length - 1; i++) {
                 if (array[i] > array[i + 1]) {
+                    isSorted = false;
+
                     array[i] ^= array[i + 1];
                     array[i + 1] ^= array[i];
                     array[i] ^= array[i + 1];
                 }
             }
-            right--;
-
-            for (int i = right; i > left; i--) {
-                if (array[i] < array[i - 1]) {
-                    array[i] ^= array[i - 1];
-                    array[i - 1] ^= array[i];
-                    array[i] ^= array[i - 1];
-                }
-            }
-            left++;
-        } while (left <= right);
+        }
 
         long end = System.currentTimeMillis();
 

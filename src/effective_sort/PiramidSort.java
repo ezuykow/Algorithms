@@ -3,7 +3,6 @@ package effective_sort;
 import util.NewArray;
 
 import java.io.FileNotFoundException;
-import java.util.Arrays;
 
 /**
  * Worst time -> O(n * log(n))
